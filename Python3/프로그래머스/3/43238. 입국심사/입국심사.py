@@ -8,16 +8,16 @@ def cal_people(arr, time, target):
     return people, flag
 
 def binary_search(arr, target, f, r):
-    if f > r:
-        return f
-    mid = (f + r) // 2
-    people, flag = cal_people(arr, mid, target)
-    if people == target and flag:
-        return mid
-    elif (people == target and not flag) or people > target:
-        return binary_search(arr, target, f, mid-1)
-    else:
-        return binary_search(arr, target, mid+1, r)
+    while f <= r:
+        mid = (f + r) // 2
+        people, flag = cal_people(arr, mid, target)
+        if people == target and flag:
+            return mid
+        elif (people == target and not flag) or people > target:
+            r = mid - 1
+        else:
+            f = mid + 1
+    return f
     
 def solution(n, times):
     min_ = min(times)
