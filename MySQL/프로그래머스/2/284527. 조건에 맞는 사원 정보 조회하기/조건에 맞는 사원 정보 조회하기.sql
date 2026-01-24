@@ -1,0 +1,22 @@
+SELECT
+    SUM(SCORE) SCORE,
+    E.EMP_NO,
+    EMP_NAME,
+    POSITION,
+    EMAIL
+FROM
+    HR_EMPLOYEES E
+    JOIN
+    HR_GRADE G
+    USING(EMP_NO)
+GROUP BY
+    G.YEAR,
+    E.EMP_NO,
+    EMP_NAME,
+    POSITION,
+    EMAIL
+ORDER BY
+    SCORE DESC
+LIMIT
+    1
+    
